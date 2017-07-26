@@ -55,7 +55,9 @@ class Game
   end
 
   def get(x, y)
-    within_bounds?(x, y) ? @grid[x][y] : nil
+    @grid[x][y]
+  rescue NoMethodError
+    nil
   end
 
   def get_neighbours(x, y)
@@ -65,10 +67,6 @@ class Game
       [x,     y + 1], [x,     y - 1],
       [x + 1,     y], [x - 1,     y]
     ].map { |x_, y_| get(x_, y_) }
-  end
-
-  def within_bounds?(x, y)
-    x.between?(0, @x_size - 1) && y.between?(0, @y_size - 1)
   end
 
   def to_s
@@ -104,7 +102,6 @@ class Game
   private :increase_population_count,
           :stage_population_count,
           :stage_grid,
-          :within_bounds?,
           :get_neighbours,
           :grid_each
 end
