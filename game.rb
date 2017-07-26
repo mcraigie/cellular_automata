@@ -22,6 +22,8 @@ class Game
     end
   end
 
+  # TODO: change method to not require knowledge of exact cell types
+  # (maybe get a default cell type from the Cell class)
   def populate_random(n)
     n.times do
       set(rand(0...@x_size), rand(0...@y_size), :alive)
@@ -98,6 +100,10 @@ class Game
   def barren?
     @generation > 0 && population.zero? ? true : false
   end
+
+  # TODO: store a hash for each generation. Add a method called cycle_detected?
+  # that checks the current hash against all previous hashes and returns true if
+  # there is a match. Then remove the stalled? method
 
   private :increase_population_count,
           :stage_population_count,
