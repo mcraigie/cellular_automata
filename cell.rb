@@ -62,7 +62,7 @@ class Cell
   # This ./* notation is very similar to some of the cellular automata
   # file format. I would like to make each rendering of the game state a valid
   # save file for that state. I may need to make my own format depending on how
-  # I introduce more exotic cell scheme.
+  # I introduce more exotic cell schemes
   def to_c
     if alive?
       '.'.colorize(color: :blue, background: :blue)
